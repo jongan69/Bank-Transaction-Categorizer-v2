@@ -10,8 +10,8 @@ graph TD;
     B -- "Transaction Descriptions" --> C{BERT Model};
     C -- "Category & Subcategory<br/>Predictions" --> B;
     B -- "{'results': [...]}" --> A;
-style B fill:#f9f,stroke:#333,stroke-width:2px
-style C fill:#ccf,stroke:#333,stroke-width:2px
+style B fill:#fff,stroke:#000,stroke-width:2px
+style C fill:#fef,stroke:#000,stroke-width:2px
 ```
 
 ---
