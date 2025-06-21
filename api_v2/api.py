@@ -2,9 +2,8 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List
 import pandas as pd
-import torch
 import os
-from utils.api_predict import BankTransactionCategorizer
+from utils.api_predict import BankTransactionCategorizerHF
 from datetime import datetime
 
 app = FastAPI()
@@ -18,13 +17,13 @@ class TransactionsRequest(BaseModel):
 class CategorizedTransaction(BaseModel):
     Description: str
     Category: str
-    Sub_Category: str
+    Subcategory: str
 
 class CategorizedResponse(BaseModel):
     results: List[CategorizedTransaction]
 
 # Initialize the categorizer once (loads models from HF Hub)
-categorizer = BankTransactionCategorizer()
+categorizer = BankTransactionCategorizerHF()
 
 @app.post("/categorize", response_model=CategorizedResponse)
 def categorize_transactions(request: TransactionsRequest):
@@ -53,6 +52,6 @@ def categorize_transactions(request: TransactionsRequest):
     results = [CategorizedTransaction(
         Description=row["Description"],
         Category=row["Category"],
-        Sub_Category=row["Sub_Category"]
+        Subcategory=row["Subcategory"]
     ) for _, row in results_df.iterrows()]
     return CategorizedResponse(results=results) 
