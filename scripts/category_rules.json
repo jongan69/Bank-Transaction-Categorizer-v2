@@ -1,0 +1,194 @@
+{
+    "Transfers_Internal_Movement": {
+      "Bank_Transfer_To_Checking": ["online banking transfer to chk\\b"],
+      "Bank_Transfer_From_Checking": ["online banking transfer from chk\\b"],
+      "Bank_Transfer_To_Savings": ["online banking transfer to sav\\b"],
+      "Bank_Transfer_From_Savings": ["online banking transfer from sav\\b"],
+      "Overdraft_Protection": ["overdraft protection"],
+      "Keep_the_Change_Transfer": ["keep the change", "keepthechange"],
+      "External_Transfer": ["transfer to brk", "coinbase", "uphold", "public\\.com", "gemini", "kraken", "imps", "neft", "tpt", "monthly transfer", "remittance", "sweep trf", "sweep transfer", "sweep", "autosweep", "int.a/c", "xfer ac", "trf m"],
+      "ATM_Transaction": ["\\batm\\b.*(deposit|withdrawal)", "bkofamerica atm", "\\bcash\\b", "cwdr", "to self", "self", "casho!", "cacsh", "crash"]
+    },
+    "Credit_Card_Loan_Payments": {
+      "Credit_Card_Payment": [
+        "payment - thank you", "online payment from chk", "applecard gsbank",
+        "capital one", "citi card online", "credit card bill",
+        "online banking payment to crd", "bank of america credit card bill", "bill pay check \\d+",
+        "wf des:payment", "cred\\.club", "payment on cred"
+      ],
+      "Auto_Loan_Payment": ["westlakesvcs"],
+      "BNPL": ["klarna", "afterpay", "affirm"],
+      "Installment_Loan": ["sofi securities", "groundfloor", "upgrade loans"],
+      "Zelle_P2P_Received": ["zelle payment to"],
+      "Deposit": ["des:deposit", "atm .* deposit", "citibank, n\\.a\\. des:deposit"],
+      "Interest_Income": ["by int\\.cr", "sb int", "int\\.pd", "intpd", "normal interest", "interest for", "int. pd", "int01-"]
+    },
+    "Income_Credits": {
+      "Payroll_Income": ["payroll", "paycheck", "direct deposit", "hillstone restau des:payroll"],
+      "Cashback_Statement_Credits": ["cash rewards statement credit", "statement credit"],
+      "Zelle_P2P_Received": ["zelle payment to"],
+      "Deposit": ["des:deposit", "atm .* deposit", "citibank, n\\.a\\. des:deposit"],
+      "Interest_Income": ["by int\\.cr", "sb int", "int\\.pd", "intpd", "normal interest", "interest for", "int. pd", "int01-"]
+    },
+    "P2P_Digital_Wallets": {
+      "Cash_App": ["cash app\\*jonat.*"],
+      "Zelle": ["zelle"],
+      "Venmo": ["venmo"],
+      "Paytm": ["paytm"],
+      "Razorpay": ["razorpay"]
+    },
+    "Fees_Interest": {
+      "Bank_Fees": ["monthly maintenance fee", "return of posted check", "overdraft item fee", "service fee", "sms chrg", "annual .* chrg", "sms charges", "sms alert", "dup passbook chg", "sms", "stop payment"],
+      "Interest_Charged_Purchases": ["interest charged on purchases"],
+      "Interest_Charged_Cash_Advance": ["interest charged on bank cash ad"]
+    },
+    "Utilities_Recurring_Bills": {
+      "Electric": ["fpl", "con edison", "duke energy"],
+      "Insurance": ["geico", "state farm", "progressive", "allstate", "lic of india", "oriental insurance", "life insurance"],
+      "Phone_Internet": ["t-mobile", "verizon", "att", "comcast", "xfinity"],
+      "Cable_TV": ["m k cable network"]
+    },
+    "Legal_Government": {
+      "Court_Ticket_Payments": ["webpay-courtorticket", "court fine", "dmv"],
+      "Tax_Payments_Refunds": ["irs treas", "tax refund", "turbotax", "h&r block", "tax", "cgst", "sgst"]
+    },
+    "Shopping": {
+      "General_Merchandise": ["amazon\\.com", "walmart", "target", "costco", "best buy", "newegg", "convenience store", "dollar tree"],
+      "POS_Purchases": ["pos-", "pos/", "pos "]
+    },
+    "Food": {
+      "Dining_Restaurants": [
+        "hillstone", "tin roof", "twin peaks", "tst\\*", "downtowner", "moe's", "yes cafe", "bobs your uncle",
+        "starbuck", "mariappan idli"
+      ],
+      "Food_Delivery": ["doordash", "ubereats", "grubhub", "zomato", "food hut pizza"],
+      "Fast_Food": ["vending machin", "mcdonalds", "burger king", "wendys", "shake shack"],
+      "Groceries": ["walgreens", "publix", "whole foods", "trader joe"]
+    },
+    "Auto": {
+      "Gas": ["shell", "chevron", "bp", "exxon", "76 station"],
+      "Auto_Maintenance": ["jiffy lube", "tire kingdom", "auto repair", "firestone"],
+      "Other_Auto": ["parking", "tolls", "dmv", "car wash"]
+    },
+    "Travel": {
+      "Activities": ["expo & conv ctr", "theme park", "museum"],
+      "Ride_Sharing": ["lyft", "uber"],
+      "Flights": ["spirit airlines", "delta", "american airlines"],
+      "Hotels": ["airbnb", "hotelcom", "hilton", "marriott"],
+      "Car_Rental": ["hertz", "avis", "enterprise", "turo", "alamo", "national car rental"],
+      "Travel_Services": ["hopper", "expedia", "tours & travels"]
+    },
+    "Electronics": {
+      "Electronics_misc": ["best buy", "apple\\.com/bill", "newegg", "microcenter", "watch co"],
+      "Accessories": ["anker", "belkin", "logitech", "case-mate"],
+      "Computer": ["dell", "hp", "lenovo", "apple", "microsoft store"],
+      "TV": ["samsung", "lg", "sony", "vizio"],
+      "Tablet_Watch": ["ipad", "galaxy tab", "apple watch", "samsung watch"]
+    },
+    "Entertainment": {
+        "Arts_Crafts": ["michaels", "joann", "hobby lobby"],
+        "Games": ["steamgames", "nintendo", "playstation", "xbox", "blizzard"],
+        "Guns": ["gun store", "ammo", "firearms"],
+        "Entertainment_Sports_Outdoors": ["dick's sporting goods", "rei", "bass pro shops", "cabelas"],
+        "Books": ["barnes & noble", "audible", "kindle", "amazon books"],
+        "DateNights": ["cinema", "theater", "concert", "amc"],
+        "E_Other": ["eventbrite", "ticketmaster", "live nation", "bookmyshow"],
+        "Movies_TV": ["amc theatres", "regal cinemas", "fandango", "cinemark"]
+    },
+    "Subscriptions_Memberships": {
+      "Entertainment": ["netflix", "spotify", "hulu", "disney\\+", "onlyfans"],
+      "Subscriptions_Memberships_Gym": ["planet fitness", "la fitness", "24 hour fitness"],
+      "Sub_Other": ["apple\\.com/bill", "pwp privacy\\.com", "amazon prime"]
+    },
+    "Medical": {
+      "Health_Wellness": ["cvs", "walgreens", "rite aid", "health", "chemist", "clinic", "lifecare", "wellness forever"],
+      "Vision_Dental": ["lenscrafters", "dental", "orthodontics", "visionworks"]
+    },
+    "Clothes": {
+      "Clothes_Clothes": ["zara", "hm", "uniqlo", "macys", "nordstrom", "knit wear"],
+      "Shoes": ["nike", "adidas", "footlocker", "finish line"],
+      "Jewelry": ["jared", "tiffany", "jewelry", "kay jewelers"],
+      "Bags_Accessories": ["coach", "kate spade", "michael kors", "tumi"]
+    },
+    "Personal_Care": {
+      "Hair": ["barber", "salon", "great clips", "supercuts"],
+      "Beauty": ["ulta", "sephora", "makeup"],
+      "Massage": ["massage envy", "hand and stone"],
+      "Vitamins_Supplements": ["gnc", "vitamin shoppe"],
+      "Makeup_Nails": ["nail salon", "sephora", "ulta"],
+      "PC_Other": ["spa", "skincare"],
+      "Personal_Care_Sports_Outdoors": ["personal care", "sports", "outdoors"]
+    },
+    "Baby": {
+        "Baby_Clothes": ["carter's", "oshkosh b'gosh", "buybuy baby"],
+        "Diapers": ["huggies", "pampers", "luvs"],
+        "Formula": ["enfamil", "similac"],
+        "Other_Baby": ["buybuy baby", "babies r us", "pottery barn kids"],
+        "Toys": ["fisher-price", "melissa & doug", "lego"]
+    },
+    "Home": {
+        "Rent": ["rent"],
+        "Decor": ["homegoods", "pottery barn", "west elm", "crate & barrel", "ikea"],
+        "Furniture_Appliances": ["ikea", "ashley furniture", "wayfair", "best buy", "lowes", "home depot", "conns"],
+        "Home_Gym": ["peloton", "bowflex", "rogue fitness", "treadmill"],
+        "Home_Essentials": ["bed bath & beyond", "the container store", "target", "walmart"],
+        "Hygiene": ["dollar shave club", "harrys", "proctor & gamble"],
+        "Kitchen": ["williams sonoma", "sur la table", "kitchenaid"],
+        "Home_Maintenance": ["angi", "homeadvisor", "taskrabbit", "handyman"],
+        "Security": ["adt", "simplisafe", "ring", "vivint"],
+        "Tools": ["harbor freight", "ace hardware", "lowes", "home depot"],
+        "Yard_Garden": ["scotts", "miracle-gro", "lowes", "home depot"]
+    },
+    "Kids": {
+      "K_Toys": ["lego", "toysrus", "mattel"]
+    },
+    "Pets": {
+      "Pet_Food": ["chewy", "petco", "petsmart"],
+      "Pet_Grooming": ["grooming", "petco", "petsmart"],
+      "Pet_Med": ["pet meds", "1800petmeds"],
+      "Pet_Other": ["pet supply", "petco", "petsmart"],
+      "Pet_Toys": ["barkbox", "chewy"]
+    },
+    "Investments_Crypto": {
+      "Brokerage_Investments": ["webull", "fundrise", "robinhood", "td ameritrade", "e-trade", "zerodha", "tata .* fund", "aditya birla", "birla sunlife", "icici prudential", "franklin india", "sbi", "sundaram bnp", "dsp", "icici bank", "asba"],
+      "Crypto_Exchange": ["kraken", "gemini", "coinbase", "helius", "moonpay", "dexscreener", "geminipay", "moonbase"],
+      "Dividends": ["dividend", "div2023", "nach:"]
+    },
+    "Refunds": {
+      "Purchase_Refund": ["purchase refund", "return", "reversal", "credit", "wrong ent rev"]
+    },
+    "Debt_Collection": {
+        "Collections_Agencies": ["collection"]
+    },
+    "Retirement_Savings": {
+        "Pension_Provident_Fund": ["ppf", "pen"]
+    },
+    "Education": {
+        "Educational_Services": ["school", "college", "university", "tuition", "cl educate", "j k shah", "thakur public", "counselling fees"]
+    },
+    "Government_Services": {
+        "Fees_and_Charges": ["stamp paper", "govt"]
+    },
+    "Person_To_Person": {
+        "Individual_Transfers": ["tushar surendra shah", "surendra a shah", "pramod waman pancha", "baban barku", "ganpati baug chs"]
+    },
+    "Business_Services": {
+        "IT_Services": ["ganesh software"],
+        "Consulting": ["good little robots", "hirenastro world"]
+    },
+    "Locker_Services": {
+        "Locker_Charges": ["locker", "loc 362", "locker rent"]
+    },
+    "Digital_Payments": {
+        "UPI": ["upi", "okhdfcbank", "@hdfcbank", "@okbizaxis", "@icici", "@c", "cbank"],
+        "QR_Code": ["qr"]
+    },
+    "Bank_Internal_Processing": {
+        "Internal_Codes": ["iss/", "cvor/", "trtr/", "eaw-", "atw-", "nwd-", "chdr/", "cwdr/", "owdr/", "cv0r/", "dlin/", "upt/", "by clc:", "by inst", "by cc:"]
+    },
+    "Unclassified_Miscellaneous": {
+      "Other_Services": ["greenfi", "privacy\\.com", "vape", "misc", "unknown", "pradip h salot", "bhavya tushar shah", "rakesh c dat", "sadhana shah", "tejal shah", "mitesh mehta", "goradia bimal"],
+      "Unknown": []
+    }
+  }
+  

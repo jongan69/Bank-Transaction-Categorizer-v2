@@ -1,4 +1,4 @@
-# Bank Transaction Categorizer v2
+# Bank-Transaction-Categorizer-v2
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -184,5 +184,3 @@ Pull requests and issues are welcome! If you find this project useful, please co
 ## 📄 License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-# Bank-Transaction-Categorizer-v2

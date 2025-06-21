@@ -1,0 +1,20 @@
+utils/__pycache__/model.cpython-311.pyc
+*.pyc
+models/
+utils/tempCodeRunnerFile.py
+utils/__pycache__/data_prep.cpython-311.pyc
+bin/
+.DS_Store
+.vscode/
+__pycache__
+include/
+lib/
+share/
+# Ignore virtual environments and site-packages
+*.so
+*.dylib
+*.pkl
+*.h5
+*.pt
+*.pth
+*.ckpt
