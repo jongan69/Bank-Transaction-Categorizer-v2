@@ -2,7 +2,6 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List
 import pandas as pd
-import torch
 import os
 from utils.api_predict import BankTransactionCategorizer
 from datetime import datetime

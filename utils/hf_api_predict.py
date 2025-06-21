@@ -1,11 +1,10 @@
 """
-BankTransactionCategorizerHF: Use models from Hugging Face Hub (jonngan/transaction-categorizer and jonngan/transaction-subcategorizer)
+BankTransactionCategorizerHF: Use a model from Hugging Face Hub (e.g., jonngan/distilbert-hypopt-transaction-classifier)
 
 Example usage:
     from utils.hf_api_predict import BankTransactionCategorizerHF
     categorizer = BankTransactionCategorizerHF(
-        cat_repo='jonngan/transaction-categorizer',
-        subcat_repo='jonngan/transaction-subcategorizer'
+        repo_id='jonngan/distilbert-hypopt-transaction-classifier'
     )
     # df = pd.DataFrame([...])
     # result_df = categorizer.predict(df)
@@ -13,30 +12,15 @@ Example usage:
 import pandas as pd
 import torch
 from torch.utils.data import TensorDataset, DataLoader
-from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
+from transformers import DistilBertTokenizer
 from sklearn.preprocessing import LabelEncoder
 from .data_prep import DataPreprocessor
 from .dicts import categories
-
-class DistilBertModelHF(torch.nn.Module):
-    def __init__(self, num_categories, num_subcategories, repo_id):
-        super().__init__()
-        self.bert_model = DistilBertForSequenceClassification.from_pretrained(
-            repo_id,
-            num_labels=num_categories + num_subcategories
-        )
-        self.num_categories = num_categories
-        self.num_subcategories = num_subcategories
-    def forward(self, input_ids):
-        outputs = self.bert_model(input_ids)
-        logits = outputs.logits
-        category_logits, subcategory_logits = logits.split([self.num_categories, self.num_subcategories], dim=-1)
-        return category_logits, subcategory_logits
+from .model import DistilBertForTransactionClassification, DistilBertForTransactionClassificationConfig
 
 class BankTransactionCategorizerHF:
-    def __init__(self, cat_repo='jonngan/transaction-categorizer', subcat_repo='jonngan/transaction-subcategorizer'):
-        self.cat_repo = cat_repo
-        self.subcat_repo = subcat_repo
+    def __init__(self, repo_id='jonngan/distilbert-hypopt-transaction-classifier'):
+        self.repo_id = repo_id
         self.category_keys = list(categories.keys())
         self.category_values = [item for sublist in categories.values() for item in sublist]
         self.num_categories = len(self.category_keys)
@@ -51,11 +35,15 @@ class BankTransactionCategorizerHF:
         self.label_encoder_subcat = LabelEncoder()
         self.label_encoder_cat.fit(self.category_keys)
         self.label_encoder_subcat.fit(self.category_values)
-        self.cat_model = self._load_model(self.cat_repo)
-        self.sub_model = self._load_model(self.subcat_repo)
+        self.model = self._load_model(self.repo_id)
 
     def _load_model(self, repo_id):
-        model = DistilBertModelHF(self.num_categories, self.num_subcategories, repo_id)
+        config = DistilBertForTransactionClassificationConfig.from_pretrained(
+            repo_id,
+            num_categories=self.num_categories,
+            num_subcategories=self.num_subcategories
+        )
+        model = DistilBertForTransactionClassification.from_pretrained(repo_id, config=config)
         model.to(self.device)
         model.eval()
         return model
@@ -65,15 +53,15 @@ class BankTransactionCategorizerHF:
         df_obj.clean_dataframe()
         X_predict = df_obj.tokenize_predict_data(max_len=32)
         predict_input_ids = torch.tensor(X_predict, dtype=torch.long)
-        predict_dataset = TensorDataset(predict_input_ids)
+        attention_mask = (predict_input_ids != 0).long()
+        predict_dataset = TensorDataset(predict_input_ids, attention_mask)
         predict_dataloader = DataLoader(predict_dataset, batch_size=1, shuffle=False)
         categories, subcategories, descriptions = [], [], []
         for batch in predict_dataloader:
-            input_ids = batch[0].to(self.device)
+            input_ids, attention_mask = [item.to(self.device) for item in batch]
             with torch.no_grad():
-                category_probs, _ = self.cat_model(input_ids)
+                category_probs, subcategory_probs = self.model(input_ids, attention_mask=attention_mask)
                 category_predictions = category_probs.argmax(dim=-1)
-                _, subcategory_probs = self.sub_model(input_ids)
                 subcategory_predictions = subcategory_probs.argmax(dim=-1)
             for i in range(input_ids.size(0)):
                 category_name = self.label_encoder_cat.inverse_transform([category_predictions[i].item()])[0]

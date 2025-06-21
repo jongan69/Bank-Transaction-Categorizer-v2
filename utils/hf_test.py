@@ -1,9 +1,6 @@
-from utils.hf_api_predict import BankTransactionCategorizerHF
+from .hf_api_predict import BankTransactionCategorizerHF
 
-categorizer = BankTransactionCategorizerHF(
-    cat_repo='jonngan/trans-cat',
-    subcat_repo='jonngan/trans-subcat'
-)
+categorizer = BankTransactionCategorizerHF()
 
 # Example DataFrame
 import pandas as pd

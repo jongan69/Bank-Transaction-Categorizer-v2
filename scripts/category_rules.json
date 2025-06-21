@@ -4,15 +4,15 @@
       "Bank_Transfer_From_Checking": ["online banking transfer from chk\\b"],
       "Bank_Transfer_To_Savings": ["online banking transfer to sav\\b"],
       "Bank_Transfer_From_Savings": ["online banking transfer from sav\\b"],
-      "Overdraft_Protection": ["overdraft protection"],
-      "Keep_the_Change_Transfer": ["keep the change", "keepthechange"],
+      "Overdraft_Protection": ["overdraft protection", "overdraft protection from"],
+      "Keep_the_Change_Transfer": ["keep the change", "keepthechange credit from", "keepthechange transfer"],
       "External_Transfer": ["transfer to brk", "coinbase", "uphold", "public\\.com", "gemini", "kraken", "imps", "neft", "tpt", "monthly transfer", "remittance", "sweep trf", "sweep transfer", "sweep", "autosweep", "int.a/c", "xfer ac", "trf m"],
       "ATM_Transaction": ["\\batm\\b.*(deposit|withdrawal)", "bkofamerica atm", "\\bcash\\b", "cwdr", "to self", "self", "casho!", "cacsh", "crash"]
     },
     "Credit_Card_Loan_Payments": {
       "Credit_Card_Payment": [
-        "payment - thank you", "online payment from chk", "applecard gsbank",
-        "capital one", "citi card online", "credit card bill",
+        "payment - thank you", "online payment from chk", "applecard gsbank", "online payment from chk 8615",
+        "capital one", "citi card online", "credit card bill", "best buy des:payment",
         "online banking payment to crd", "bank of america credit card bill", "bill pay check \\d+",
         "wf des:payment", "cred\\.club", "payment on cred"
       ],
@@ -26,12 +26,12 @@
     "Income_Credits": {
       "Payroll_Income": ["payroll", "paycheck", "direct deposit", "hillstone restau des:payroll"],
       "Cashback_Statement_Credits": ["cash rewards statement credit", "statement credit"],
-      "Zelle_P2P_Received": ["zelle payment to"],
+      "Zelle_P2P_Received": ["zelle payment to", "zelle payment from"],
       "Deposit": ["des:deposit", "atm .* deposit", "citibank, n\\.a\\. des:deposit"],
       "Interest_Income": ["by int\\.cr", "sb int", "int\\.pd", "intpd", "normal interest", "interest for", "int. pd", "int01-"]
     },
     "P2P_Digital_Wallets": {
-      "Cash_App": ["cash app\\*jonat.*"],
+      "Cash_App": ["cash app\\*", "cash app\\*", "cashapp"],
       "Zelle": ["zelle"],
       "Venmo": ["venmo"],
       "Paytm": ["paytm"],
@@ -40,7 +40,7 @@
     "Fees_Interest": {
       "Bank_Fees": ["monthly maintenance fee", "return of posted check", "overdraft item fee", "service fee", "sms chrg", "annual .* chrg", "sms charges", "sms alert", "dup passbook chg", "sms", "stop payment"],
       "Interest_Charged_Purchases": ["interest charged on purchases"],
-      "Interest_Charged_Cash_Advance": ["interest charged on bank cash ad"]
+      "Interest_Charged_Cash_Advance": ["interest charged on bank cash ad", "interest charged on bank cash advances"]
     },
     "Utilities_Recurring_Bills": {
       "Electric": ["fpl", "con edison", "duke energy"],
@@ -59,14 +59,14 @@
     "Food": {
       "Dining_Restaurants": [
         "hillstone", "tin roof", "twin peaks", "tst\\*", "downtowner", "moe's", "yes cafe", "bobs your uncle",
-        "starbuck", "mariappan idli"
+        "starbuck", "mariappan idli", "hillstone 786"
       ],
-      "Food_Delivery": ["doordash", "ubereats", "grubhub", "zomato", "food hut pizza"],
+      "Food_Delivery": ["doordash", "ubereats", "grubhub", "zomato", "food hut pizza", "dd \\*doordash"],
       "Fast_Food": ["vending machin", "mcdonalds", "burger king", "wendys", "shake shack"],
       "Groceries": ["walgreens", "publix", "whole foods", "trader joe"]
     },
     "Auto": {
-      "Gas": ["shell", "chevron", "bp", "exxon", "76 station"],
+      "Gas": ["shell", "chevron", "bp", "exxon", "76 station", "shell oil", "chevron 0047674"],
       "Auto_Maintenance": ["jiffy lube", "tire kingdom", "auto repair", "firestone"],
       "Other_Auto": ["parking", "tolls", "dmv", "car wash"]
     },
@@ -79,7 +79,7 @@
       "Travel_Services": ["hopper", "expedia", "tours & travels"]
     },
     "Electronics": {
-      "Electronics_misc": ["best buy", "apple\\.com/bill", "newegg", "microcenter", "watch co"],
+      "Electronics_misc": ["best buy", "apple\\.com/bill", "newegg", "microcenter", "watch co", "best buy des:auto pymt"],
       "Accessories": ["anker", "belkin", "logitech", "case-mate"],
       "Computer": ["dell", "hp", "lenovo", "apple", "microsoft store"],
       "TV": ["samsung", "lg", "sony", "vizio"],
@@ -98,10 +98,10 @@
     "Subscriptions_Memberships": {
       "Entertainment": ["netflix", "spotify", "hulu", "disney\\+", "onlyfans"],
       "Subscriptions_Memberships_Gym": ["planet fitness", "la fitness", "24 hour fitness"],
-      "Sub_Other": ["apple\\.com/bill", "pwp privacy\\.com", "amazon prime"]
+      "Sub_Other": ["apple\\.com/bill", "pwp privacy\\.com", "amazon prime", "onlyfans"]
     },
     "Medical": {
-      "Health_Wellness": ["cvs", "walgreens", "rite aid", "health", "chemist", "clinic", "lifecare", "wellness forever"],
+      "Health_Wellness": ["cvs", "walgreens", "rite aid", "health", "chemist", "clinic", "lifecare", "wellness forever", "walgreens"],
       "Vision_Dental": ["lenscrafters", "dental", "orthodontics", "visionworks"]
     },
     "Clothes": {
@@ -187,7 +187,7 @@
         "Internal_Codes": ["iss/", "cvor/", "trtr/", "eaw-", "atw-", "nwd-", "chdr/", "cwdr/", "owdr/", "cv0r/", "dlin/", "upt/", "by clc:", "by inst", "by cc:"]
     },
     "Unclassified_Miscellaneous": {
-      "Other_Services": ["greenfi", "privacy\\.com", "vape", "misc", "unknown", "pradip h salot", "bhavya tushar shah", "rakesh c dat", "sadhana shah", "tejal shah", "mitesh mehta", "goradia bimal"],
+      "Other_Services": ["greenfi", "privacy\\.com", "vape", "misc", "unknown", "pradip h salot", "bhavya tushar shah", "rakesh c dat", "sadhana shah", "tejal shah", "mitesh mehta", "goradia bimal", "d&d vape & smo"],
       "Unknown": []
     }
   }

@@ -1,6 +1,4 @@
-import pandas as pd
 import torch
-import os
 import json
 import re
 from torch.utils.data import TensorDataset, DataLoader
@@ -34,7 +32,7 @@ def label_transaction(description, rules):
     return None, None
 
 class BankTransactionCategorizer:
-    def __init__(self, model_path='models/distilbert-transaction-classifier', rules_path='scripts/category_rules.json'):
+    def __init__(self, model_path='models/distilbert-hypopt-transaction-classifier', rules_path='scripts/category_rules.json'):
         self.device = get_device()
         self.model = DistilBertForTransactionClassification.from_pretrained(model_path)
         self.model.to(self.device)
