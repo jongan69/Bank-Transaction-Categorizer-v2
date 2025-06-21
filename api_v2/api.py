@@ -18,6 +18,8 @@ class CategorizedTransaction(BaseModel):
     Description: str
     Category: str
     Subcategory: str
+    CategoryConfidence: float
+    SubcategoryConfidence: float
 
 class CategorizedResponse(BaseModel):
     results: List[CategorizedTransaction]
@@ -52,6 +54,8 @@ def categorize_transactions(request: TransactionsRequest):
     results = [CategorizedTransaction(
         Description=row["Description"],
         Category=row["Category"],
-        Subcategory=row["Subcategory"]
+        Subcategory=row["Subcategory"],
+        CategoryConfidence=row["CategoryConfidence"],
+        SubcategoryConfidence=row["SubcategoryConfidence"]
     ) for _, row in results_df.iterrows()]
     return CategorizedResponse(results=results) 

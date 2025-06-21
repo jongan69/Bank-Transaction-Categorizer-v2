@@ -3,6 +3,7 @@ import torch
 from torch.utils.data import TensorDataset, DataLoader
 from transformers import DistilBertTokenizer
 from sklearn.preprocessing import LabelEncoder
+import torch.nn.functional as F
 from .data_prep import DataPreprocessor
 from .dicts import categories
 from .model import DistilBertForTransactionClassification, DistilBertForTransactionClassificationConfig
@@ -46,25 +47,34 @@ class BankTransactionCategorizerHF:
         attention_mask = (predict_input_ids != 0).long()
         predict_dataset = TensorDataset(predict_input_ids, attention_mask)
         predict_dataloader = DataLoader(predict_dataset, batch_size=1, shuffle=False)
-        categories, subcategories, descriptions = [], [], []
+        
+        results = []
+
         for batch in predict_dataloader:
-            input_ids, attention_mask = [item.to(self.device) for item in batch]
+            input_ids, attention_mask_batch = [item.to(self.device) for item in batch]
             with torch.no_grad():
-                category_probs, subcategory_probs = self.model(input_ids, attention_mask=attention_mask)
-                category_predictions = category_probs.argmax(dim=-1)
-                subcategory_predictions = subcategory_probs.argmax(dim=-1)
+                category_logits, subcategory_logits = self.model(input_ids, attention_mask=attention_mask_batch)
+                
+                cat_probs = F.softmax(category_logits, dim=-1)
+                sub_probs = F.softmax(subcategory_logits, dim=-1)
+
+                cat_conf, cat_preds = torch.max(cat_probs, dim=-1)
+                sub_conf, sub_preds = torch.max(sub_probs, dim=-1)
+
             for i in range(input_ids.size(0)):
-                category_name = self.label_encoder_cat.inverse_transform([category_predictions[i].item()])[0]
-                subcategory_name = self.label_encoder_subcat.inverse_transform([subcategory_predictions[i].item()])[0]
+                category_name = self.label_encoder_cat.inverse_transform([cat_preds[i].item()])[0]
+                subcategory_name = self.label_encoder_subcat.inverse_transform([sub_preds[i].item()])[0]
+                
                 single_input_ids = input_ids[i].to('cpu')
                 tokens = self.tokenizer.convert_ids_to_tokens(single_input_ids)
                 description = self.tokenizer.convert_tokens_to_string([token for token in tokens if token != "[PAD]"]).strip()
-                categories.append(category_name)
-                subcategories.append(subcategory_name)
-                descriptions.append(description)
-        result_df = pd.DataFrame({
-            'Description': descriptions,
-            'Category': categories,
-            'Subcategory': subcategories
-        })
-        return result_df 
+
+                results.append({
+                    'Description': description,
+                    'Category': category_name,
+                    'CategoryConfidence': cat_conf[i].item(),
+                    'Subcategory': subcategory_name,
+                    'SubcategoryConfidence': sub_conf[i].item()
+                })
+
+        return pd.DataFrame(results) 

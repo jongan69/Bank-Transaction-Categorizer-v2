@@ -6,4 +6,5 @@ transformers
 scikit-learn
 tensorflow
 nltk
-optuna 
+optuna
+openpyxl 
