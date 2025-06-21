@@ -3,7 +3,7 @@ from collections import Counter
 
 # Load the dataset
 try:
-    df = pd.read_csv('data/main_combined.csv')
+    df = pd.read_csv('data/training_data_v4.csv')
 except FileNotFoundError:
     print("Error: The file 'data/main_combined.csv' was not found.")
     exit()

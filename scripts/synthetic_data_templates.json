@@ -1,0 +1,186 @@
+{
+    "Travel": {
+      "Flights": {
+        "templates": [
+          "{airline} FLGT {flight_num} {city_pair}",
+          "CHECKCARD {airline_short} {date} {location}",
+          "Purchase {airline} {city_pair}",
+          "TICKET {airline} {random_id}"
+        ],
+        "placeholders": {
+          "airline": ["AMERICAN AIRLINES", "DELTA AIR LINES", "LUFTHANSA", "EMIRATES", "RYANAIR", "AIRASIA", "QANTAS"],
+          "airline_short": ["AA", "DL", "LH", "EK", "FR", "AK", "QF"],
+          "flight_num": ["###", "####"],
+          "city_pair": ["JFK-LAX", "CDG-DXB", "SYD-SIN", "LHR-MUC", "SFO-HND"],
+          "location": ["NEW YORK NY", "LONDON UK", "SINGAPORE", "ONLINE", "PARIS FR"],
+          "random_id": ["XXXXXXXXXX"],
+          "date": ["MM/DD/YYYY", "DD/MM/YYYY"]
+        }
+      },
+      "Hotels": {
+        "templates": [
+          "{hotel_chain} {city}",
+          "HOTEL {hotel_chain} {random_id}",
+          "Check-in {hotel_chain} {date}"
+        ],
+        "placeholders": {
+          "hotel_chain": ["MARRIOTT", "HILTON", "ACCOR", "Taj Hotels", "NH HOTELS", "RADISSON"],
+          "city": ["NEW YORK NY", "LONDON UK", "BANGKOK TH", "BERLIN DE", "CAPE TOWN ZA", "DUBAI UAE"],
+          "random_id": ["XXXXXXXX"],
+          "date": ["MM/DD/YYYY", "DD/MM/YYYY"]
+        }
+      },
+      "Ride_Sharing": {
+        "templates": [
+          "LYFT RIDE {day_of_week}",
+          "UBER TRIP {date}",
+          "BOLT RIDE {city}",
+          "GRAB TRIP {city}"
+        ],
+        "placeholders": {
+          "day_of_week": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+          "date": ["MM/DD/YYYY", "DD/MM/YYYY"],
+          "city": ["NAIROBI KE", "JAKARTA ID", "WARSAW PL", "LAGOS NG", "MANILA PH"]
+        }
+      },
+      "Rail": {
+        "templates": [
+          "EUROSTAR ONLINE {city_pair}",
+          "TRENITALIA TICKET {city}",
+          "JR PASS {city_pair}"
+        ],
+        "placeholders": {
+          "city_pair": ["LONDON-PARIS", "TOKYO-OSAKA", "ROME-FLORENCE"],
+          "city": ["PARIS FR", "OSAKA JP", "FLORENCE IT"]
+        }
+      }
+    },
+    "Utilities_Recurring_Bills": {
+      "Electric": {
+        "templates": [
+          "EDF ENERGY PAYMENT",
+          "ENEL ITALY BILL",
+          "CON EDISON ONLINE PAYMENT",
+          "DUKE ENERGY PMT {random_id}"
+        ],
+        "placeholders": {
+          "random_id": ["XXXXXXXX"]
+        }
+      },
+      "Insurance": {
+        "templates": [
+          "GEICO AUTO PAYMENT",
+          "STATE FARM PMT",
+          "PROGRESSIVE INS {policy_num}",
+          "AXA INSURANCE DEBIT",
+          "AVIVA AUTO INS {policy_num}"
+        ],
+        "placeholders": {
+          "policy_num": ["#########"]
+        }
+      }
+    },
+    "Subscriptions_Memberships": {
+      "Sub_Other": {
+        "templates": [
+          "NETFLIX.COM {city}",
+          "SPOTIFY USA",
+          "DAZN UK PAYMENT",
+          "YOUTUBE PREMIUM",
+          "AMAZON PRIME RENEWAL",
+          "ONLYFANS",
+          "WECHAT SUBSCRIPTION",
+          "DISNEY+ {country_code}"
+        ],
+        "placeholders": {
+          "city": ["LOS GATOS CA", "LONDON UK", "SEOUL KR", "TORONTO CA"],
+          "country_code": ["US", "UK", "CA", "FR", "DE"]
+        }
+      }
+    },
+    "Food": {
+      "Dining_Restaurants": {
+        "templates": [
+          "TST*{restaurant_name} {city}",
+          "{restaurant_name} DINING",
+          "{restaurant_name} {currency_symbol}{amount} {country_code}"
+        ],
+        "placeholders": {
+          "restaurant_name": ["CHEESECAKE FACTORY", "OLIVE GARDEN", "PRET A MANGER", "WAGAMAMA", "PIZZAEXPRESS"],
+          "city": ["MIAMI FL", "LONDON UK", "TOKYO JP", "BARCELONA ES"],
+          "currency_symbol": ["$", "€", "£", "¥"],
+          "amount": ["12.45", "23.00", "9.99"],
+          "country_code": ["US", "GB", "JP", "ES"]
+        }
+      },
+      "Fast_Food": {
+        "templates": [
+          "MCDONALD'S F{store_num} {city}",
+          "WENDY'S STORE {store_num}",
+          "BURGER KING #{store_num}",
+          "JOLLIBEE {city}",
+          "KFC ONLINE {city}"
+        ],
+        "placeholders": {
+          "store_num": ["####", "#####"],
+          "city": ["MIAMI FL", "MANILA PH", "LONDON UK", "JOHANNESBURG ZA"]
+        }
+      }
+    },
+    "Mobile_Payments": {
+      "Mobile_Payments": {
+        "templates": [
+          "APPLE PAY {merchant_name} {city}",
+          "GOOGLE PAY - {merchant_name}",
+          "ALIPAY {merchant_name} {location}",
+          "MPESA TRANSFER {recipient}"
+        ],
+        "placeholders": {
+          "merchant_name": ["TESCO", "ZARA", "WALMART", "H&M", "GUCCI"],
+          "city": ["NEW YORK NY", "LONDON UK", "NAIROBI KE", "BEIJING CN"],
+          "location": ["ONLINE", "STORE #456"],
+          "recipient": ["+254712345678", "+8613800138000"]
+        }
+      }
+    },
+    "Credit_Card_Loan_Payments": {
+        "BNPL": {
+            "templates": ["KLARNA PAYMENT", "AFTERPAY PURCHASE", "AFFIRM INSTALLMENT"],
+            "placeholders": {}
+        },
+        "Auto_Loan_Payment": {
+            "templates": ["ALLY BANK PAYMENT", "FORD CREDIT AUTO PAY", "CAPITAL ONE AUTO LOAN", "WESTLAKESVCS PAYMENT"],
+            "placeholders": {}
+        },
+        "Installment_Loan": {
+            "templates": ["SOFI LOAN PAYMENT", "LENDINGCLUB PMT", "UPGRADE LOAN {loan_id}"],
+            "placeholders": {
+                "loan_id": ["LP#######"]
+            }
+        }
+    },
+    "Income_Credits": {
+        "Payroll_Income": {
+            "templates": ["DIRECT DEPOSIT {company_name}", "PAYROLL {employee_id}", "SALARY CREDIT {company_name}"],
+            "placeholders": {
+                "company_name": ["ACME CORP", "GLOBEX INC", "WAYSTAR ROYCO", "HILLSTONE RESTAU"],
+                "employee_id": ["EMP#####"]
+            }
+        }
+    },
+    "Transfers_Internal_Movement": {
+        "Bank_Transfer_To_Checking": {
+            "templates": ["ONLINE TRANSFER TO CHK ...{last_4}", "TRANSFER FROM SAV ...{last_4}"],
+            "placeholders": { "last_4": ["####"] }
+        },
+        "Bank_Transfer_From_Checking": {
+            "templates": ["ONLINE TRANSFER FROM CHK ...{last_4}", "TRANSFER TO SAV ...{last_4}"],
+            "placeholders": { "last_4": ["####"] }
+        },
+        "Keep_the_Change_Transfer": {
+            "templates": ["KEEP THE CHANGE TRANSFER", "KEEPTHECHANGE CREDIT FROM SAV"],
+            "placeholders": {}
+        }
+    }
+  }
+  
