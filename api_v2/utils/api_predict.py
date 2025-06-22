@@ -9,7 +9,7 @@ from .dicts import categories
 from .model import DistilBertForTransactionClassification, DistilBertForTransactionClassificationConfig
 
 class BankTransactionCategorizerHF:
-    def __init__(self, repo_id='jonngan/distilbert-hypopt-transaction-classifier'):
+    def __init__(self, repo_id='jonngan/distilbert-transaction-classifier-v4'):
         self.repo_id = repo_id
         self.category_keys = list(categories.keys())
         self.category_values = [item for sublist in categories.values() for item in sublist]
