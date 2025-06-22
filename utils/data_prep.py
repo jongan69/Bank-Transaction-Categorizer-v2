@@ -90,12 +90,29 @@ class DataPreprocessor:
                                                                     padding='post', truncating='post')
         self.df['Tokenized_padded'] = np.array(padded_desc).tolist()
         
-        # Define the default one-hot encoded vector for 'Unknown'
-        unknown_subcategory_one_hot = self.subcategory_mapping.get('Unknown', np.zeros(self.num_subcategories))
+        # --- Pre-filter to ensure all categories and subcategories are in our mapping ---
+        original_rows = len(self.df)
         
+        # Identify invalid categories
+        invalid_cats = self.df[~self.df['Category'].isin(self.category_mapping.keys())]
+        if not invalid_cats.empty:
+            print(f"Warning: Found {len(invalid_cats)} rows with invalid categories. Removing them.")
+            print("Invalid categories found:", invalid_cats['Category'].unique().tolist())
+            self.df = self.df[self.df['Category'].isin(self.category_mapping.keys())]
+
+        # Identify invalid subcategories
+        invalid_subs = self.df[~self.df['Sub_Category'].isin(self.subcategory_mapping.keys())]
+        if not invalid_subs.empty:
+            print(f"Warning: Found {len(invalid_subs)} rows with invalid subcategories. Removing them.")
+            print("Invalid subcategories found:", invalid_subs['Sub_Category'].unique().tolist())
+            self.df = self.df[self.df['Sub_Category'].isin(self.subcategory_mapping.keys())]
+
+        if len(self.df) < original_rows:
+            print(f"Removed a total of {original_rows - len(self.df)} rows with unknown labels.")
+
         # Map the Category and Sub_Category values to the corresponding one-hot encoded vectors
-        self.df['Tok_Cat'] = self.df['Category'].apply(lambda x: self.category_mapping.get(x))
-        self.df['Tok_Sub'] = self.df['Sub_Category'].apply(lambda x: self.subcategory_mapping.get(x, unknown_subcategory_one_hot))
+        self.df['Tok_Cat'] = self.df['Category'].apply(lambda x: self.category_mapping[x])
+        self.df['Tok_Sub'] = self.df['Sub_Category'].apply(lambda x: self.subcategory_mapping[x])
         
         return self.df
 

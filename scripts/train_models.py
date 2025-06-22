@@ -14,8 +14,8 @@ from utils.model import DistilBertForTransactionClassification, DistilBertForTra
 from utils.data_prep import DataPreprocessor
 
 # Parameters
-DATA_PATH = 'data/training_data_v3.csv'
-MODEL_SAVE_PATH = 'models/distilbert-transaction-classifier-v3'
+DATA_PATH = 'data/training_data_v4.csv'
+MODEL_SAVE_PATH = 'models/distilbert-transaction-classifier-v4'
 TEMP_MODEL_DIR = 'models/temp_best_model_v3'
 N_TRIALS = 15  # Further increased trials for our best dataset
 PATIENCE = 3 # Early stopping patience
